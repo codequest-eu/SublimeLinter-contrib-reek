@@ -13,12 +13,14 @@ Before using this plugin, you must ensure that `reek` is installed on your syste
 
 1. Install [Ruby](http://www.ruby-lang.org).
 
-2. Install `reek` by typing the following in a terminal:
+1. Install `reek` by typing the following in a terminal:
    ```
    [sudo] gem install reek
    ```
 
-3. If you are using `rbenv` or `rvm`, ensure that they are loaded in your shell’s correct startup file. See [here](http://sublimelinter.readthedocs.org/en/latest/troubleshooting.html#shell-startup-files) for more information.
+1. If you are using `rbenv` or `rvm`, ensure that they are loaded in your shell’s correct startup file. See [here](http://sublimelinter.readthedocs.org/en/latest/troubleshooting.html#shell-startup-files) for more information.
+
+**Note:** This plugin requires `reek` 3.5.0 or later.
 
 ### Linter configuration
 In order for `reek` to be executed by SublimeLinter, you must ensure that its path is available to SublimeLinter. Before going any further, please read and follow the steps in [“Finding a linter executable”](http://sublimelinter.readthedocs.org/en/latest/troubleshooting.html#finding-a-linter-executable) through “Validating your PATH” in the documentation.
