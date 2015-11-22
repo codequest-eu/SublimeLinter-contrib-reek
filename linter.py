@@ -10,7 +10,7 @@
 
 """This module exports the Reek plugin class."""
 
-from SublimeLinter.lint import RubyLinter, util
+from SublimeLinter.lint import RubyLinter
 
 
 class Reek(RubyLinter):
