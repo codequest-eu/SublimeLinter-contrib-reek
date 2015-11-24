@@ -31,3 +31,4 @@ class Reek(RubyLinter):
     version_args = '-S reek -v'
     version_re = r'reek\s(?P<version>\d+\.\d+\.\d+)'
     version_requirement = '>= 3.5.0'
+    config_file = ('-c', 'config.reek')

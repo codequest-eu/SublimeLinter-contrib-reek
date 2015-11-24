@@ -36,6 +36,19 @@ To install via Package Control, do the following:
 
 1. When the plugin list appears, type `reek`. Among the entries you should see `SublimeLinter-contrib-reek`. If that entry is not highlighted, use the keyboard or mouse to select it.
 
+## Settings
+For general information on how SublimeLinter works with settings, please see [Settings][settings]. For information on generic linter settings, please see [Linter Settings][linter-settings].
+
+You can configure reek exactly the way you would from the command line, using `config.reek` configuration files. For more information, see the [reek documentation](https://github.com/troessner/reek#configuration-file).
+
+By default, the linter plugin looks for a config file called `config.reek` in the current directory and its parents. To override the config file path, you would add this to the linter settings:
+
+```json
+"reek": {
+    "args": ["-c", "path/to/config.reek"]
+}
+```
+
 ## Contributing
 If you would like to contribute enhancements or fixes, please do the following:
 
