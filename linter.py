@@ -26,7 +26,7 @@ class Reek(RubyLinter):
         'ruby'
     )
     cmd = 'ruby -S reek'
-    regex = r'^.+?\[(?P<line>\d+)\]:(?P<message>.+)'
+    regex = r'^.+?\[(?P<line>\d+).*\]:(?P<message>.+)'
     tempfile_suffix = 'rb'
     version_args = '-S reek -v'
     version_re = r'reek\s(?P<version>\d+\.\d+\.\d+)'
