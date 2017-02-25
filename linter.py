@@ -11,6 +11,7 @@
 """This module exports the Reek plugin class."""
 
 from SublimeLinter.lint import RubyLinter
+import re
 
 
 class Reek(RubyLinter):
@@ -25,10 +26,33 @@ class Reek(RubyLinter):
         'ruby on rails',
         'ruby'
     )
-    cmd = 'ruby -S reek'
-    regex = r'^.+?\[(?P<line>\d+).*\]:(?P<message>.+)'
+    cmd = 'reek'
+    regex = r'^.+?\[(?P<line>\d+).*\]:(?P<message>.+) \[.*\]'
     tempfile_suffix = 'rb'
-    version_args = '-S reek -v'
     version_re = r'reek\s(?P<version>\d+\.\d+\.\d+)'
     version_requirement = '>= 3.5.0'
     config_file = ('-c', 'config.reek')
+
+    def split_match(self, match):
+        """Extract named capture groups from the regex and return them as a tuple."""
+
+        match, line, col, error, warning, message, _ = super().split_match(match)
+        near = self.search_token(message)
+
+        return match, line, col, error, warning, message, near
+
+    def search_token(self, message):
+        """Search text token to be highlighted."""
+
+        # First search for variable name enclosed in single quotes
+        m = re.search("'.*'", message)
+
+        # If there's no variable name search for nil-check message
+        if m is None:
+            m = re.search('nil(?=-check)', message)
+
+        # If there's no nil-check search for method name that comes after a `#`
+        if m is None:
+            m = re.search('(?<=#)\S+', message)
+
+        return m.group(0) if m else None
